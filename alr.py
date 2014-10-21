@@ -18,16 +18,13 @@ def compute_alr(a, y0, max_iter = 50, acc=1e-8):
     w0 = w0.reshape(-1, 1)
 
     while True:
-      
         au = a.dot(u)
         b = u.T.dot(au)
         yr = u.T.dot(y0)
         z0 = la.solve_lyapunov(b, yr.dot(yr.T))
         w1 = a.dot(w0)
         w1 = w1 - u.dot(u.T.dot(w1))
-        rs = w1.dot(z0[0, :].reshape(1, -1))
-        q = la.norm(rs)
-
+        q = la.norm(w1) * la.norm(z0[0, :])
         if q < toler:
             break
         if i >= max_iter:

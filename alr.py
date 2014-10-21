@@ -45,7 +45,6 @@ def compute_alr(a, y0, max_iter = 50, acc=1e-8):
         
         w0 = a.dot(w0)
         w0 -= u.dot(u.T.dot(w0))
-        w_norm = la.norm(w0)
         w0 /= la.norm(w0)
         w0 -= u.dot(u.T.dot(w0))
         w0 /= la.norm(w0)

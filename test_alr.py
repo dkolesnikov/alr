@@ -14,4 +14,4 @@ if y0.T.dot(a.dot(y0)) > 0:
 a = a.tocsr()
 
 result = compute_alr(a, y0)
-print 'Reached accurracy is ', result['resnorm']
+print 'Reached accurracy is ', result['resnorm'], ', rank is ', result['u'].shape[1]
